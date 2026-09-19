@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#faf7f2">
+    <title>Happy Birthday, Anjali ✨</title>
+    <style>
+        /* ===== CONFIGURATION & CUSTOMIZATION ===== */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #fdf6f0 0%, #f5e6ff 100%);
+            --secondary-gradient: linear-gradient(135deg, #ffe0f0 0%, #e0e8ff 100%);
+            --accent-pink: #ff6b9d;
+            --accent-purple: #c084fc;
+            --accent-blue: #60a5fa;
+            --text-dark: #2d1b4e;
+            --text-light: #6b5b7e;
+            --bg-light: #faf7f2;
+            --bg-white: #ffffff;
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 12px 48px rgba(0, 0, 0, 0.12);
+            --shadow-glow: 0 0 30px rgba(255, 107, 157, 0.2);
+            --transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--primary-gradient);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        /* ===== REDUCED MOTION ===== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: translate(0, 0) scale(0);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx, 0), var(--ty, 0)) scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes gentle-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(255, 107, 157, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 107, 157, 0.5);
+            }
+        }
+
+        @keyframes character-breathe {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes particle-float {
+            0% {
+                opacity: 1;
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) translateX(var(--particle-x, 0));
+            }
+        }
+
+        @keyframes fadeOutBig {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+        }
+
+        .countdown-timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 107, 157, 0.9);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-medium), var(--shadow-glow);
+            z-index: 999;
+            backdrop-filter: blur(10px);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .countdown-timer.warning {
+            background: rgba(255, 65, 65, 0.95);
+            animation: pulse 0.5s ease-in-out infinite;
+        }
+
+        .self-destruct-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2d1b4e, #1a0f2e);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 2000;
+            padding: 20px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .self-destruct-screen.active {
+            display: flex !important;
+        }
+
+        .self-destruct-content {
+            color: white;
+        }
+
+        .self-destruct-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: pulse 0.8s ease-in-out infinite;
+        }
+
+        .self-destruct-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: rgba(255, 107, 157, 0.9);
+        }
+
+        .destruct-message {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .destruct-countdown {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #ff6b9d;
+            margin: 40px 0;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 0 20px rgba(255, 107, 157, 0.5);
+        }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            padding-top: max(20px, env(safe-area-inset-top, 0px));
+            padding-bottom: max(20px, env(safe-area-inset-bottom, 0px));
+        }
+
+        /* ===== HERO SECTION ===== */
+        #hero {
+            background: var(--primary-gradient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            text-align: center;
+            animation: floatIn 0.8s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            color: var(--text-light);
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .character-container {
+            width: 100%;
+            max-width: 280px;
+            height: 280px;
+            margin: 30px auto;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .character {
+            width: 100%;
+            height: 100%;
+            animation: character-breathe 3s ease-in-out infinite;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        /* ===== BUTTON STYLES ===== */
+        .btn {
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+            color: white;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium), var(--shadow-glow);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 2px solid var(--accent-pink);
+            color: var(--accent-pink);
+        }
+
+        .btn-ghost:hover {
+            background: var(--accent-pink);
+            color: white;
+        }
+
+        /* ===== HIDDEN SECTIONS ===== */
+        section.hidden {
+            display: none;
+        }
+
+        section.active {
+            display: flex;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        /* ===== MESSAGE SECTION ===== */
+        #message {
+            background: linear-gradient(135deg, #fff9f5 0%, #f5f0ff 100%);
+        }
+
+        .message-card {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+            max-width: 100%;
+            width: 100%;
+            animation: floatIn 0.6s ease-out;
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .message-card h2 {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .message-card p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* ===== WISH SECTION ===== */
+        #wish {
+            background: linear-gradient(135deg, #fff9f5 0%, #ffe0f0 100%);
+        }
+
+        .wish-container {
+            width: 100%;
+            max-width: 500px;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .wish-container h2 {
+            font-size: clamp(1.8rem, 6vw, 2.2rem);
+            margin-bottom: 15px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        .wish-container > p {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 140px;
+            padding: 16px;
+            border: 2px solid #f0e6ff;
+            border-radius: 16px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-dark);
+            background: var(--bg-white);
+            resize: vertical;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1), var(--shadow-soft);
+        }
+
+        .hint {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* ===== CONFIRMATION ===== */
+        .confirmation-message {
+            text-align: center;
+            animation: floatIn 0.6s ease-out;
+        }
+
+        .confirmation-message h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .confirmation-message p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        /* ===== PROMISE CARD SECTION ===== */
+        #promise {
+            background: linear-gradient(135deg, #e0e8ff 0%, #ffe0f0 100%);
+        }
+
+        .promise-container {
+            width: 100%;
+            max-width: 500px;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .promise-container h2 {
+            font-size: clamp(1.8rem, 6vw, 2.2rem);
+            margin-bottom: 10px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        .promise-container > p {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .promise-grid {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .promise-option {
+            padding: 18px;
+            border: 2px solid #f0e6ff;
+            border-radius: 16px;
+            background: var(--bg-white);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .promise-option:active {
+            transform: scale(0.97);
+        }
+
+        .promise-option.selected {
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+            color: white;
+            border-color: var(--accent-pink);
+            box-shadow: var(--shadow-medium), var(--shadow-glow);
+        }
+
+        .promise-option:not(.selected):hover {
+            border-color: var(--accent-pink);
+            transform: translateY(-2px);
+        }
+
+        /* ===== SOMETHING ELSE SECTION ===== */
+        #somethingElse {
+            background: linear-gradient(135deg, #fff9f5 0%, #f5e6ff 100%);
+        }
+
+        .something-else-container {
+            width: 100%;
+            max-width: 500px;
+            animation: slideUp 0.6s ease-out;
+            text-align: center;
+        }
+
+        .something-else-container h2 {
+            font-size: clamp(1.8rem, 6vw, 2.2rem);
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .something-else-container p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        /* ===== SPOTIFY SECTION ===== */
+        #spotify {
+            background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
+            display: none;
+        }
+
+        #spotify.show {
+            display: flex;
+        }
+
+        .spotify-card {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 100%;
+            animation: floatIn 0.6s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .spotify-card h2 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .spotify-card p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+        }
+
+        .spotify-btn {
+            background: white;
+            color: #1db954;
+            font-weight: 700;
+            padding: 14px 36px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .spotify-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* ===== VIDEO SECTION ===== */
+        #video {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: none;
+        }
+
+        #video.show {
+            display: flex;
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 100%;
+            animation: floatIn 0.6s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .video-card h2 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .video-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 25px;
+        }
+
+        .video-btn {
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+            color: white;
+            font-weight: 700;
+            padding: 14px 36px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .video-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium), var(--shadow-glow);
+        }
+
+        /* ===== VIDEO MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            padding: 20px;
+            padding-top: env(safe-area-inset-top, 0px);
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: var(--bg-white);
+            border-radius: 24px;
+            overflow: hidden;
+            max-width: 100%;
+            width: 100%;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+            z-index: 1001;
+        }
+
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.7);
+            transform: scale(1.1);
+        }
+
+        .modal-video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+        }
+
+        .modal-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== FOOTER ===== */
+        #footer {
+            background: var(--primary-gradient);
+            padding-top: 60px;
+        }
+
+        .footer-content {
+            text-align: center;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .footer-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .footer-content p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-sparkle {
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+            font-size: 1.5rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-height: 600px) {
+            section {
+                min-height: auto;
+                padding: 15px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+                margin-bottom: 5px;
+            }
+
+            .character-container {
+                max-width: 180px;
+                height: 180px;
+                margin: 15px auto;
+            }
+        }
+
+        @media (min-width: 768px) {
+            section {
+                padding: 40px 20px;
+            }
+
+            .message-card,
+            .wish-container,
+            .promise-container,
+            .something-else-container {
+                padding: 50px;
+                border-radius: 32px;
+            }
+
+            .promise-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        input:focus,
+        button:focus,
+        .promise-option:focus {
+            outline: 2px solid var(--accent-pink);
+            outline-offset: 2px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* ===== UTILITY ===== */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-3 {
+            margin-top: 30px;
+        }
+
+        .mb-2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HERO SECTION ===== -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Happy Birthday, Anjali ✨</h1>
+                <p>Okay… this isn't a normal birthday card.</p>
+                
+                <!-- Cute Birthday Cake Illustration -->
+                <div class="character-container">
+                    <svg class="character" viewBox="0 0 280 320" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Cake Base Layer 1 -->
+                        <rect x="40" y="180" width="200" height="60" rx="10" fill="#f4a261" />
+                        <ellipse cx="140" cy="180" rx="100" ry="20" fill="#e8915d" />
+                        
+                        <!-- Cake Base Layer 2 -->
+                        <rect x="55" y="130" width="170" height="60" rx="10" fill="#ff9d6b" />
+                        <ellipse cx="140" cy="130" rx="85" ry="18" fill="#ff8a52" />
+                        
+                        <!-- Cake Base Layer 3 (Top) -->
+                        <rect x="70" y="80" width="140" height="60" rx="10" fill="#ffa97a" />
+                        <ellipse cx="140" cy="80" rx="70" ry="16" fill="#ff9163" />
+                        
+                        <!-- Frosting Swirls -->
+                        <path d="M 50 175 Q 60 165, 70 175 Q 80 185, 90 175" stroke="#c084fc" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.8" />
+                        <path d="M 190 175 Q 200 165, 210 175 Q 220 185, 230 175" stroke="#c084fc" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.8" />
+                        <path d="M 60 125 Q 70 115, 80 125 Q 90 135, 100 125" stroke="#ff6b9d" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.8" />
+                        <path d="M 180 125 Q 190 115, 200 125 Q 210 135, 220 125" stroke="#ff6b9d" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.8" />
+                        
+                        <!-- Candle 1 -->
+                        <rect x="115" y="25" width="12" height="50" rx="6" fill="#fff9c4" />
+                        <ellipse cx="121" cy="20" rx="8" ry="12" fill="#ff6b6b" />
+                        <circle cx="121" cy="18" r="5" fill="#ffff00" opacity="0.8" />
+                        
+                        <!-- Candle 2 -->
+                        <rect x="153" y="30" width="12" height="45" rx="6" fill="#fff9c4" />
+                        <ellipse cx="159" cy="25" rx="8" ry="12" fill="#ff6b6b" />
+                        <circle cx="159" cy="23" r="5" fill="#ffff00" opacity="0.8" />
+                        
+                        <!-- Candle 3 -->
+                        <rect x="134" y="15" width="12" height="55" rx="6" fill="#fff9c4" />
+                        <ellipse cx="140" cy="10" rx="8" ry="12" fill="#ff6b6b" />
+                        <circle cx="140" cy="8" r="5" fill="#ffff00" opacity="0.8" />
+                        
+                        <!-- Plate -->
+                        <ellipse cx="140" cy="250" rx="110" ry="25" fill="#e8d4f8" />
+                        <ellipse cx="140" cy="248" rx="105" ry="22" fill="#f0e0ff" />
+                        
+                        <!-- Decorative Stars Around Cake -->
+                        <text x="30" y="100" font-size="24">✨</text>
+                        <text x="225" y="110" font-size="22">⭐</text>
+                        <text x="25" y="200" font-size="20">💫</text>
+                        <text x="235" y="210" font-size="20">✨</text>
+                        <text x="20" y="280" font-size="18">🎂</text>
+                        <text x="240" y="270" font-size="18">🎉</text>
+                        
+                        <!-- Extra Sprinkles on Cake -->
+                        <circle cx="80" cy="145" r="3" fill="#ff1493" />
+                        <circle cx="100" cy="140" r="3" fill="#ff69b4" />
+                        <circle cx="120" cy="148" r="3" fill="#ff1493" />
+                        <circle cx="160" cy="142" r="3" fill="#ff69b4" />
+                        <circle cx="180" cy="150" r="3" fill="#ff1493" />
+                        <circle cx="200" cy="145" r="3" fill="#ff69b4" />
+                        
+                        <circle cx="95" cy="195" r="3" fill="#00bfff" />
+                        <circle cx="140" cy="200" r="3" fill="#00bfff" />
+                        <circle cx="185" cy="192" r="3" fill="#00bfff" />
+                    </svg>
+                    <div class="particles" id="hero-particles"></div>
+                </div>
+
+                <button class="btn" id="openBtn" onclick="goToMessage()">
+                    OPEN YOUR LITTLE SURPRISE ✦
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MESSAGE SECTION ===== -->
+    <section id="message" class="hidden">
+        <div class="container">
+            <div class="message-card">
+                <h2>Happy Birthday, Anjali ✨</h2>
+                <p>
+                    Some people deserve more than a simple "Happy Birthday".
+                </p>
+                <p>
+                    So I made you this tiny little corner of the internet.
+                </p>
+                <p style="margin-top: 30px;">
+                    <strong>No expiry date.</strong><br>
+                    <strong>No complicated rules.</strong><br>
+                    <strong>Just one promise:</strong>
+                </p>
+                <p style="margin-top: 20px; font-size: 1.05rem; line-height: 1.9;">
+                    Whenever you need something, you can leave a message here.
+                </p>
+                <p style="margin-top: 20px;">
+                    And yes… I'll have to see what I can do about it. 😌
+                </p>
+                <button class="btn" onclick="goToWish()">Let's Begin ✨</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WISH SECTION ===== -->
+    <section id="wish" class="hidden">
+        <div class="container">
+            <div class="wish-container">
+                <h2>✨ Make a Wish</h2>
+                <p>Whatever you're wishing for... you can leave it here.</p>
+                
+                <textarea id="wishInput" placeholder="Write your wish here…"></textarea>
+                <div class="hint">Press Enter + Shift for new line | Tap Send to continue</div>
+                
+                <button class="btn" id="sendWishBtn" onclick="submitWish()">Send My Wish ✦</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONFIRMATION SECTION ===== -->
+    <section id="confirmation" class="hidden">
+        <div class="container">
+            <div class="confirmation-message">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">✨</h2>
+                <h3>Your wish has been received.</h3>
+                <p style="margin-bottom: 30px;">Something magical happens next…</p>
+                
+                <div style="margin: 30px 0;">
+                    <h2 style="font-size: 1.3rem; margin-bottom: 15px;">Now… I have one little promise to keep. ♡</h2>
+                </div>
+                
+                <button class="btn" id="sendWishFromConfirmBtn" onclick="sendWishFromConfirmation()">Send My Wish to You 💌</button>
+                <p style="margin-top: 20px; color: var(--text-light); font-size: 0.85rem;">or continue to Digital Promise Card</p>
+                <button class="btn btn-ghost" style="margin-top: 10px;" onclick="goToPromise()">Continue to Promise Card ✦</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROMISE CARD SECTION ===== -->
+    <section id="promise" class="hidden">
+        <div class="container">
+            <div class="promise-container">
+                <h2>Your Digital Promise Card ♡</h2>
+                <p>One tiny promise, valid whenever you need it.</p>
+                
+                <!-- Wish Summary -->
+                <div id="wishSummary" style="background: rgba(255, 107, 157, 0.08); padding: 20px; border-radius: 16px; margin-bottom: 25px; border: 2px solid rgba(255, 107, 157, 0.2);">
+                    <p style="color: var(--text-light); font-size: 0.85rem; margin-bottom: 8px;">✨ Your Wish:</p>
+                    <p style="color: var(--text-dark); font-weight: 500; font-size: 0.95rem;" id="wishDisplayText"></p>
+                </div>
+                
+                <div class="promise-grid" id="promiseGrid">
+                    <div class="promise-option" onclick="selectPromise(this, '☕ Treat Required')">☕ Treat Required</div>
+                    <div class="promise-option" onclick="selectPromise(this, '📞 I Need a Call')">📞 I Need a Call</div>
+                    <div class="promise-option" onclick="selectPromise(this, '🫶 I Need Your Help')">🫶 I Need Your Help</div>
+                    <div class="promise-option" onclick="selectPromise(this, '🌙 Bad Day. Need Backup.')">🌙 Bad Day. Need Backup.</div>
+                    <div class="promise-option" onclick="selectPromise(this, '🎬 Let\'s Do Something Fun')">🎬 Let's Do Something Fun</div>
+                    <div class="promise-option" onclick="goToSomethingElse()">✨ Something Else…</div>
+                </div>
+
+                <div id="promiseMessage" style="display: none; margin-top: 30px;">
+                    <p style="color: var(--text-light); margin-bottom: 15px;" id="selectedPromiseText"></p>
+                    
+                    <textarea id="promiseExtra" placeholder="Add a personal message (optional)…" style="margin-bottom: 20px;"></textarea>
+                    
+                    <button class="btn" onclick="sendCombinedMessage()">Send Both to You 💌</button>
+                    <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-light); text-align: center;">Your wish + promise will be sent together</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SOMETHING ELSE SECTION ===== -->
+    <section id="somethingElse" class="hidden">
+        <div class="container">
+            <div class="something-else-container">
+                <h2>Okay, your turn.</h2>
+                <p>What do you need?</p>
+                
+                <textarea id="somethingElseInput" placeholder="Type anything…" style="margin-bottom: 20px;"></textarea>
+                
+                <button class="btn" onclick="sendSomethingElse()">Send It To Me ♡</button>
+                <button class="btn btn-ghost" style="margin-top: 15px;" onclick="goToPromise()">Back to Promises</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SPOTIFY SECTION ===== -->
+    <section id="spotify">
+        <div class="container">
+            <div class="spotify-card">
+                <h2>🎧 Psst… there may be a song here.</h2>
+                <p>Press play when you're curious.</p>
+                <button class="spotify-btn" id="spotifyBtn" onclick="openSpotify()">Unlock the Song ♫</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VIDEO SECTION ===== -->
+    <section id="video">
+        <div class="container">
+            <div class="video-card">
+                <h2>🔒 There's another little secret…</h2>
+                <p>Something special, just for you.</p>
+                <button class="video-btn" onclick="openVideoModal()">Unlock ✦</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER SECTION ===== -->
+    <section id="footer" class="hidden">
+        <div class="container">
+            <div class="footer-content">
+                <h3>Made specially for Anjali ♡</h3>
+                <p>Valid indefinitely.<br>Terms & conditions: none. 😌</p>
+                <div class="footer-sparkle">✨</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VIDEO MODAL ===== -->
+    <div class="modal" id="videoModal">
+        <button class="modal-close" onclick="closeVideoModal()">✕</button>
+        <div class="modal-content">
+            <div class="modal-video" id="videoContent"></div>
+        </div>
+    </div>
+
+    <!-- ===== COUNTDOWN TIMER ===== -->
+    <div class="countdown-timer" id="countdownTimer" style="display: none;">
+        ⏳ <span id="timerText">24:00:00</span>
+    </div>
+
+    <!-- ===== SELF-DESTRUCT SCREEN ===== -->
+    <div class="self-destruct-screen" id="selfDestructScreen" style="display: none;">
+        <div class="self-destruct-content">
+            <h1>⏰ TIME'S UP ✨</h1>
+            <p>This digital promise has expired.</p>
+            <div class="destruct-message">
+                <p>But you know what?</p>
+                <p style="margin-top: 15px;">The promise was never about the website...</p>
+                <p style="margin-top: 15px;">It was always about me. 💙</p>
+            </div>
+            <div class="destruct-countdown" id="finalCountdown">5</div>
+            <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.5);">Goodbye, Anjali... 👋✨</p>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== CONFIGURATION - CHANGE THESE VALUES ONLY =====
+        const CONFIG = {
+            friendName: "Anjali",
+            whatsappNumber: "+918434955836", // Your WhatsApp number
+            spotifyUrl: "https://open.spotify.com/track/your-song-id", // Change this
+            videoUrl: "", // Leave empty to hide video section, or add YouTube/Vimeo embed link
+            senderName: "Sumant" // Your name
+        };
+        // ===== END CONFIGURATION =====
+
+        // State management
+        let currentSection = 'hero';
+        let selectedPromise = null;
+        let userWish = '';
+        let promiseSelected = false;
+        let websiteExpiryTime = null;
+        let countdownInterval = null;
+
+        // ===== NAVIGATION FUNCTIONS =====
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+                section.classList.add('hidden');
+            });
+
+            // Show target section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+                targetSection.classList.add('active');
+                currentSection = sectionId;
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function goToMessage() {
+            createSparkles(event.target);
+            setTimeout(() => {
+                showSection('message');
+            }, 300);
+        }
+
+        function goToWish() {
+            showSection('wish');
+            setTimeout(() => {
+                document.getElementById('wishInput').focus();
+            }, 100);
+        }
+
+        function goToPromise() {
+            showSection('promise');
+            // Display the wish in the summary
+            const wishDisplayText = document.getElementById('wishDisplayText');
+            if (wishDisplayText && userWish) {
+                wishDisplayText.textContent = userWish;
+            }
+            // Reset promise selection
+            selectedPromise = null;
+            promiseSelected = false;
+            document.querySelectorAll('.promise-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            document.getElementById('promiseMessage').style.display = 'none';
+        }
+
+        function goToSomethingElse() {
+            showSection('somethingElse');
+            setTimeout(() => {
+                document.getElementById('somethingElseInput').focus();
+            }, 100);
+        }
+
+        // ===== WISH SUBMISSION =====
+        function submitWish() {
+            const wishText = document.getElementById('wishInput').value.trim();
+            
+            if (!wishText) {
+                alert('Please write your wish first! 💭');
+                return;
+            }
+
+            userWish = wishText;
+            
+            // Create sparkles effect
+            const btn = document.getElementById('sendWishBtn');
+            if (btn) {
+                createSparkles(btn);
+            }
+            
+            // Go to confirmation and store wish
+            setTimeout(() => {
+                showSection('confirmation');
+            }, 300);
+        }
+
+        // ===== SEND WISH FROM CONFIRMATION =====
+        function sendWishFromConfirmation() {
+            if (!userWish) {
+                alert('No wish found! Please go back and write your wish. 💭');
+                return;
+            }
+
+            const message = `🎂 BIRTHDAY WISH FROM ANJALI\n\nHey! I just used my Digital Promise Card. ✨\n\nMy wish:\n${userWish}\n\nI think you have a promise to keep. 😌`;
+            sendViaWhatsApp(message);
+        }
+
+        // ===== PROMISE CARD SELECTION =====
+        function selectPromise(element, promiseText) {
+            // Remove previous selection
+            document.querySelectorAll('.promise-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+
+            // Select new option
+            element.classList.add('selected');
+            selectedPromise = promiseText;
+            promiseSelected = true;
+
+            // Show message input
+            document.getElementById('selectedPromiseText').textContent = `You selected: ${promiseText}`;
+            document.getElementById('promiseMessage').style.display = 'block';
+            document.getElementById('promiseExtra').focus();
+
+            createSparkles(element);
+        }
+
+        // ===== PROMISE SUBMISSION =====
+        function sendPromise() {
+            if (!selectedPromise) {
+                alert('Please select a promise first! ✨');
+                return;
+            }
+
+            const extraMessage = document.getElementById('promiseExtra').value.trim();
+            const finalMessage = buildWhatsAppMessage(selectedPromise, extraMessage);
+            sendViaWhatsApp(finalMessage);
+        }
+
+        // ===== COMBINED MESSAGE SUBMISSION =====
+        function sendCombinedMessage() {
+            if (!selectedPromise) {
+                alert('Please select a promise first! ✨');
+                return;
+            }
+
+            if (!userWish) {
+                alert('No wish found! Please go back. 💭');
+                return;
+            }
+
+            const extraMessage = document.getElementById('promiseExtra').value.trim();
+            const finalMessage = buildCombinedWhatsAppMessage(selectedPromise, extraMessage);
+            sendViaWhatsApp(finalMessage);
+        }
+
+        // ===== SOMETHING ELSE SUBMISSION =====
+        function sendSomethingElse() {
+            const somethingElseText = document.getElementById('somethingElseInput').value.trim();
+            
+            if (!somethingElseText) {
+                alert('Please tell me what you need! 💭');
+                return;
+            }
+
+            let finalMessage = `🎂 BIRTHDAY WISH & CUSTOM REQUEST FROM ANJALI\n\n`;
+            
+            if (userWish) {
+                finalMessage += `✨ HER WISH:\n"${userWish}"\n\n`;
+            }
+            
+            finalMessage += `🎟 SHE REDEEMED:\n${somethingElseText}\n\n`;
+            finalMessage += `─────────────────────\nI think you have a promise to keep. 💙\n\nMade with love for Anjali ✨`;
+            
+            sendViaWhatsApp(finalMessage);
+        }
+
+        // ===== BUILD WHATSAPP MESSAGE =====
+        function buildWhatsAppMessage(promiseOrWish, extraMessage = '') {
+            let message = '';
+
+            if (selectedPromise) {
+                message = `🎟 DIGITAL PROMISE REDEMPTION\n\nAnjali has redeemed:\n${promiseOrWish}`;
+                
+                if (extraMessage) {
+                    message += `\n\nMessage:\n${extraMessage}`;
+                }
+            } else {
+                message = `🎂 BIRTHDAY WISH FROM ANJALI\n\nHey! I just used my Digital Promise Card. ✨\n\nMy wish:\n${promiseOrWish}`;
+                
+                if (extraMessage) {
+                    message += `\n\nMessage:\n${extraMessage}`;
+                }
+            }
+
+            message += `\n\nLooks like you have a promise to keep. 😌`;
+
+            return message;
+        }
+
+        // ===== BUILD COMBINED WHATSAPP MESSAGE (Wish + Promise) =====
+        function buildCombinedWhatsAppMessage(selectedPromiseText, extraMessage = '') {
+            let message = `🎂 BIRTHDAY WISH & PROMISE FROM ANJALI\n\n`;
+            
+            message += `✨ HER WISH:\n"${userWish}"\n\n`;
+            
+            message += `🎟 SHE REDEEMED:\n${selectedPromiseText}\n\n`;
+            
+            if (extraMessage) {
+                message += `💭 PERSONAL MESSAGE:\n${extraMessage}\n\n`;
+            }
+            
+            message += `─────────────────────\nI think you have a beautiful promise to keep. 💙\n\nMade with love for Anjali ✨`;
+
+            return message;
+        }
+
+        // ===== WHATSAPP INTEGRATION =====
+        function sendViaWhatsApp(message) {
+            if (!CONFIG.whatsappNumber) {
+                alert('WhatsApp number not configured. Please add it to CONFIG.');
+                return;
+            }
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${CONFIG.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodedMessage}`;
+
+            // Show sending state
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = 'Opening WhatsApp... 💌';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+                
+                // Show footer after a delay
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                    showSection('footer');
+                }, 1000);
+            }, 500);
+        }
+
+        // ===== SPOTIFY INTEGRATION =====
+        function openSpotify() {
+            if (!CONFIG.spotifyUrl || CONFIG.spotifyUrl.includes('your-song-id')) {
+                alert('Spotify link not configured yet. 🎵');
+                return;
+            }
+            window.open(CONFIG.spotifyUrl, '_blank');
+        }
+
+        // ===== VIDEO MODAL =====
+        function openVideoModal() {
+            if (!CONFIG.videoUrl) {
+                alert('Video not configured yet. 🎬');
+                return;
+            }
+
+            const videoContent = document.getElementById('videoContent');
+            
+            // Check if it's a YouTube link
+            if (CONFIG.videoUrl.includes('youtube.com') || CONFIG.videoUrl.includes('youtu.be')) {
+                const videoId = extractYouTubeId(CONFIG.videoUrl);
+                videoContent.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            } else {
+                videoContent.innerHTML = `<iframe src="${CONFIG.videoUrl}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            }
+
+            document.getElementById('videoModal').classList.add('active');
+        }
+
+        function closeVideoModal() {
+            document.getElementById('videoModal').classList.remove('active');
+            document.getElementById('videoContent').innerHTML = '';
+        }
+
+        function extractYouTubeId(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : '';
+        }
+
+        // ===== PARTICLE EFFECTS =====
+        function createSparkles(element) {
+            if (!element) return;
+            
+            const rect = element.getBoundingClientRect();
+            const container = element.closest('section');
+            if (!container) return;
+
+            for (let i = 0; i < 6; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.style.position = 'fixed';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.left = rect.left + rect.width / 2 + 'px';
+                sparkle.style.top = rect.top + rect.height / 2 + 'px';
+                sparkle.style.fontSize = (Math.random() * 20 + 12) + 'px';
+                sparkle.textContent = ['✨', '⭐', '💫', '✦'][Math.floor(Math.random() * 4)];
+                
+                const tx = (Math.random() - 0.5) * 200;
+                const ty = -(Math.random() * 200 + 100);
+                
+                sparkle.style.animation = `particle-float 1s ease-out forwards`;
+                sparkle.style.setProperty('--particle-x', tx + 'px');
+                
+                sparkle.style.setProperty('--tx', tx + 'px');
+                sparkle.style.setProperty('--ty', ty + 'px');
+                
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        }
+
+        // ===== INITIALIZATION =====
+        function init() {
+            // Initialize self-destruct system
+            initializeSelfDestruct();
+
+            // Show hero section
+            showSection('hero');
+
+            // Show/hide Spotify section based on config
+            if (CONFIG.spotifyUrl && !CONFIG.spotifyUrl.includes('your-song-id')) {
+                document.getElementById('spotify').classList.add('show');
+            }
+
+            // Show/hide Video section based on config
+            if (CONFIG.videoUrl) {
+                document.getElementById('video').classList.add('show');
+            }
+
+            // Create floating particles in hero
+            createHeroParticles();
+
+            // Keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && document.getElementById('videoModal').classList.contains('active')) {
+                    closeVideoModal();
+                }
+            });
+        }
+
+        // ===== COUNTDOWN TIMER SYSTEM =====
+        function initializeSelfDestruct() {
+            // Get or create expiry time (stored in localStorage)
+            const savedExpiryTime = localStorage.getItem('websiteExpiryTime');
+            
+            if (savedExpiryTime) {
+                websiteExpiryTime = parseInt(savedExpiryTime);
+            } else {
+                // Set expiry to 24 hours from now
+                websiteExpiryTime = Date.now() + (24 * 60 * 60 * 1000);
+                localStorage.setItem('websiteExpiryTime', websiteExpiryTime);
+            }
+
+            // Start the countdown
+            updateCountdown();
+            countdownInterval = setInterval(updateCountdown, 1000);
+        }
+
+        function updateCountdown() {
+            const now = Date.now();
+            const timeRemaining = websiteExpiryTime - now;
+
+            if (timeRemaining <= 0) {
+                // Time's up - trigger self-destruct
+                clearInterval(countdownInterval);
+                triggerSelfDestruct();
+                return;
+            }
+
+            // Calculate hours, minutes, seconds
+            const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            const timerText = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            
+            // Update timer display
+            const timerElement = document.getElementById('timerText');
+            if (timerElement) {
+                timerElement.textContent = timerText;
+            }
+
+            // Show timer
+            const countdownTimer = document.getElementById('countdownTimer');
+            if (countdownTimer && countdownTimer.style.display === 'none') {
+                countdownTimer.style.display = 'block';
+            }
+
+            // Warning state when less than 1 hour remaining
+            if (timeRemaining < (60 * 60 * 1000)) {
+                countdownTimer.classList.add('warning');
+            } else {
+                countdownTimer.classList.remove('warning');
+            }
+        }
+
+        function triggerSelfDestruct() {
+            // Hide all sections and show self-destruct screen
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+                section.classList.add('hidden');
+            });
+
+            const selfDestructScreen = document.getElementById('selfDestructScreen');
+            if (selfDestructScreen) {
+                selfDestructScreen.classList.add('active');
+                selfDestructScreen.style.display = 'flex';
+            }
+
+            // Hide countdown timer
+            const countdownTimer = document.getElementById('countdownTimer');
+            if (countdownTimer) {
+                countdownTimer.style.display = 'none';
+            }
+
+            // Final countdown before complete destruction
+            let finalCountdown = 5;
+            const finalCountdownElement = document.getElementById('finalCountdown');
+            
+            const finalInterval = setInterval(() => {
+                finalCountdown--;
+                if (finalCountdownElement) {
+                    finalCountdownElement.textContent = finalCountdown;
+                }
+
+                if (finalCountdown <= 0) {
+                    clearInterval(finalInterval);
+                    completeDestruction();
+                }
+            }, 1000);
+
+            // Create particle effect
+            createDestructionParticles();
+        }
+
+        function createDestructionParticles() {
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.style.position = 'fixed';
+                    particle.style.pointerEvents = 'none';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.top = Math.random() * 100 + '%';
+                    particle.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                    particle.textContent = ['✨', '💫', '⭐', '🌟'][Math.floor(Math.random() * 4)];
+                    particle.style.animation = `particle-float ${2 + Math.random() * 2}s ease-out forwards`;
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(() => particle.remove(), 4000);
+                }, i * 50);
+            }
+        }
+
+        function completeDestruction() {
+            const selfDestructScreen = document.getElementById('selfDestructScreen');
+            if (selfDestructScreen) {
+                selfDestructScreen.style.animation = 'fadeOutBig 1s ease-out forwards';
+                
+                setTimeout(() => {
+                    document.body.innerHTML = `
+                        <div style="width: 100%; height: 100vh; background: linear-gradient(135deg, #2d1b4e, #1a0f2e); display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; color: white; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                            <h1 style="font-size: 2rem; margin-bottom: 20px;">✨ Website Expired ✨</h1>
+                            <p style="font-size: 1.2rem; margin-bottom: 10px;">But the promise remains...</p>
+                            <p style="color: rgba(255, 107, 157, 0.9); margin-top: 20px;">Made with 💙 for Anjali</p>
+                        </div>
+                    `;
+                }, 1000);
+            }
+        }
+
+        // Clear localStorage and reset (optional - for testing)
+        function resetWebsite() {
+            localStorage.removeItem('websiteExpiryTime');
+            location.reload();
+        }
+
+        // Create floating particles for hero section
+        function createHeroParticles() {
+            const particlesContainer = document.getElementById('hero-particles');
+            const particleEmojis = ['✨', '⭐', '💫', '✦', '🌟'];
+
+            for (let i = 0; i < 8; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.font = '1.2rem';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animation = `float ${3 + Math.random() * 2}s ease-in-out infinite`;
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                particle.textContent = particleEmojis[Math.floor(Math.random() * particleEmojis.length)];
+                particle.style.opacity = 0.6;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
